@@ -10,7 +10,7 @@ class TestGuest < Minitest::Test
 
     @josh = Guest.new("Josh", 33, 50, "Wonderwal")
     @toby = Guest.new("Toby", 40, 55, "Bohemian Rhapsody")
-    @cj = Guest.new ("CJ", 35, 60, "The Jackal")
+    @cj = Guest.new("CJ", 35, 60, "The Jackal")
 
   end
 
@@ -19,21 +19,24 @@ class TestGuest < Minitest::Test
   end
 
   def test_get_age
-    assert_equal(30, @toby.age)
+    assert_equal(40, @toby.age)
   end
 
   def test_get_cash
     assert_equal(60, @cj.cash)
   end
 
-  def test_get_favourite_song
-    assert_equal(@the_jackal, @cj.favourite_song)
+  def test_get_fav_song
+    assert_equal("The Jackal", @cj.fav_song)
   end
 
   def test_decrease_cash
     @josh.pay(20)
     assert_equal(30, @josh.cash)
   end
+
+  def test_cheer
+    assert_equal("Whoo!, They have my favourite song The Jackal!", @cj.cheer)
 
   end
 
