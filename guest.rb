@@ -17,4 +17,9 @@ def cheer
   p "Whoo!, They have my favourite song #{fav_song}!"
 end
 
+def sing(song)
+  song.play()
+  p "#{name} sang #{song.name}"
+end
+
 end

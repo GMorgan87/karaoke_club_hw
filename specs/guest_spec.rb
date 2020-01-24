@@ -3,6 +3,7 @@ require('minitest/reporters')
 Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 
 require_relative('../guest')
+require_relative('../song')
 
 class TestGuest < Minitest::Test
 
@@ -11,6 +12,8 @@ class TestGuest < Minitest::Test
     @josh = Guest.new("Josh", 33, 50, "Wonderwal")
     @toby = Guest.new("Toby", 40, 55, "Bohemian Rhapsody")
     @cj = Guest.new("CJ", 35, 60, "The Jackal")
+
+    @wonderwall = Song.new("Wanderwall", "Oasis")
 
   end
 
@@ -37,6 +40,12 @@ class TestGuest < Minitest::Test
 
   def test_cheer
     assert_equal("Whoo!, They have my favourite song The Jackal!", @cj.cheer)
+  end
+
+  def test_sing
+    @josh.sing(@wonderwall)
+    assert("Josh sang Wonderwall")
+    assert_equal(1, @wonderwall.play_count) 
 
   end
 
