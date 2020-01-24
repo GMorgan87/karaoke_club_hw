@@ -53,4 +53,17 @@ class TestRoom < Minitest::Test
     assert_equal([@wonderwall, @the_jackal], @room101.get_songs)
   end
 
+  def test_add_guest
+    @room101.add_guest(@josh)
+    @room101.add_guest(@toby)
+    assert_equal([@josh, @toby], @room101.get_occupents)
+  end
+
+  def test_remove_guest
+    @room101.add_guest(@josh)
+    @room101.add_guest(@toby)
+    @room101.remove_guest(@josh)
+    assert_equal([@toby], @room101.get_occupents)
+  end
+
 end

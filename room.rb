@@ -22,4 +22,12 @@ class Room
     @songs.push(song)
   end
 
+  def add_guest(guest)
+    @occupents.push(guest)
+  end
+
+  def remove_guest(guest)
+    @occupents.delete(guest)
+  end
+
 end
