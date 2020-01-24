@@ -23,7 +23,7 @@ class TestRoom < Minitest::Test
     @zoey = Guest.new("Zoey", 17, 30, "dancing_queen")
     @guests = [@josh, @toby, @cj, @zoey]
 
-    @room101 = Room.new("Room 101", 4, 5, @songs)
+    @room101 = Room.new("Room 101", 4, 5)
 
   end
 
@@ -40,14 +40,17 @@ class TestRoom < Minitest::Test
   end
 
   def test_get_songs
-    assert_equal([@bohemian_rhapsody, @wonderwall, @africa, @dancing_queen, @the_jackal], @room101.songs)
-
+    assert_equal([], @room101.songs)
   end
 
   def test_get_occupents
     assert_equal([], @room101.get_occupents)
   end
 
-
+  def test_add_songs_to_room
+    @room101.add_song(@wonderwall)
+    @room101.add_song(@the_jackal)
+    assert_equal([@wonderwall, @the_jackal], @room101.get_songs)
+  end
 
 end
