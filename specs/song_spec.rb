@@ -7,11 +7,11 @@ require_relative('../song')
 class TestSong < Minitest::Test
 
   def setup
-    @wannabe = Song.new("Wannabe", "Spice Girls", 0)
-    @wonderwall = Song.new ("Wanderwall", "Oasis", 0)
-    @angels = Song.new ("Angels", "Robbie Williams", 0)
-    @africa = Song.new ("Africa", "Toto" 0)
-    @country_house = SOng.new ("Country House", "Blur", 0)
+    @wannabe = Song.new("Wannabe", "Spice Girls")
+    @wonderwall = Song.new("Wonderwall", "Oasis")
+    @angels = Song.new("Angels", "Robbie Williams")
+    @africa = Song.new("Africa", "Toto")
+    @country_house = Song.new("Country House", "Blur")
   end
 
   def test_get_name
@@ -27,7 +27,7 @@ class TestSong < Minitest::Test
   end
 
   def test_increase_play_count
-    assert_equal(1, @wonderwall.increase_play_count())
+    assert_equal(1, @wonderwall.play())
   end
 
 
