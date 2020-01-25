@@ -16,22 +16,33 @@ class Club
     room.add_song(song)
   end
 
-  def check_in(guests, room)
+  def check_in_group(group, room)
     amount = room.price
-    songs = room.get_songs
-    if guests.is_a?(Array)
-      for guest in guests
-        room.add_guest(guest)
-        guest.pay(amount)
-        @till += amount
+
+    for guest in group
+      if guest.under_18?
+        return
       end
-    else
-      room.add_guest(guests)
-      guests.pay(amount)
+      room.add_guest(guest)
+      guest.pay(amount)
       @till += amount
     end
-    # p room.get_occupents
   end
+
+  def check_in(guest, room)
+    amount = room.price
+    
+    if guest.under_18?()
+      return
+    end
+    if room.is_full?()
+      return
+    end
+    room.add_guest(guest)
+    guest.pay(amount)
+    @till += amount
+  end
+
 
   def check_out(guests, room)
     if guests.is_a?(Array)

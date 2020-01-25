@@ -12,6 +12,8 @@ class TestGuest < Minitest::Test
     @josh = Guest.new("Josh", 33, 50, "Wonderwal")
     @toby = Guest.new("Toby", 40, 55, "Bohemian Rhapsody")
     @cj = Guest.new("CJ", 35, 60, "The Jackal")
+    @zoey = Guest.new("Zoey", 17, 30, "Dancing Queen")
+
 
     @wonderwall = Song.new("Wanderwall", "Oasis")
 
@@ -45,8 +47,12 @@ class TestGuest < Minitest::Test
   def test_sing
     @josh.sing(@wonderwall)
     assert("Josh sang Wonderwall")
-    assert_equal(1, @wonderwall.play_count) 
+    assert_equal(1, @wonderwall.play_count)
+  end
 
+  def test_under_18?
+    assert_equal(false, @josh.under_18?)
+    assert_equal(true, @zoey.under_18?)
   end
 
 end

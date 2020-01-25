@@ -22,4 +22,8 @@ def sing(song)
   puts "#{name} sang #{song.name}"
 end
 
+def under_18?
+   return @age < 18 ? true : false
+end
+
 end

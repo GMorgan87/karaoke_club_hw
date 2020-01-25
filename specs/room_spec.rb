@@ -72,4 +72,13 @@ class TestRoom < Minitest::Test
     assert_equal(true, @room101.has_fav_song(@josh))
   end
 
+  def test_is_full?
+    assert_equal(true, @room101.is_full?)
+    @room101.add_guest(@josh)
+    @room101.add_guest(@toby)
+    @room101.add_guest(@josh)
+    @room101.add_guest(@toby)
+    assert_equal(true, @room101.is_full?)
+  end
+
 end

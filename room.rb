@@ -42,6 +42,10 @@ class Room
     @occupents.delete(guest)
   end
 
+  def is_full?
+    capacity < 1 ? true : false
+  end
+
 
 
 end
