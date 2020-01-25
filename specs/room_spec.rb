@@ -11,16 +11,16 @@ class TestRoom < Minitest::Test
   def setup
 
     @bohemian_rhapsody = Song.new("Bohemian Rhapsody", "Queen")
-    @wonderwall = Song.new("Wanderwall", "Oasis")
+    @wonderwall = Song.new("Wonderwall", "Oasis")
     @africa = Song.new("Africa", "Toto")
     @dancing_queen = Song.new("Dancing Queen", "Abba")
     @the_jackal = Song.new("The Jackal", "Unknown")
     @songs = [@bohemian_rhapsody, @wonderwall, @africa, @dancing_queen, @the_jackal]
 
-    @josh = Guest.new("Josh", 33, 50, "wonderwall")
-    @toby = Guest.new("Toby", 40, 55, "bohemian_rhapsody")
-    @cj = Guest.new("CJ", 35, 60, "the_jackal")
-    @zoey = Guest.new("Zoey", 17, 30, "dancing_queen")
+    @josh = Guest.new("Josh", 33, 50, "Wonderwall")
+    @toby = Guest.new("Toby", 40, 55, "Bohemian_Rhapsody")
+    @cj = Guest.new("CJ", 35, 60, "The Jackal")
+    @zoey = Guest.new("Zoey", 17, 30, "Dancing Queen")
     @guests = [@josh, @toby, @cj, @zoey]
 
     @room101 = Room.new("Room 101", 4, 5)
@@ -64,6 +64,12 @@ class TestRoom < Minitest::Test
     @room101.add_guest(@toby)
     @room101.remove_guest(@josh)
     assert_equal([@toby], @room101.get_occupents)
+  end
+
+  def test_has_fav_song?
+    @room101.add_song(@wonderwall)
+    @room101.add_guest(@josh)
+    assert_equal(true, @room101.has_fav_song(@josh))
   end
 
 end

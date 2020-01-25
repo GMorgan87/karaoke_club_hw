@@ -21,12 +21,26 @@ class Room
     @songs.push(song)
   end
 
+  def has_fav_song(guest)
+    @songs.each do |song|
+      if song.name == guest.fav_song
+        return true
+      end
+    end
+    return false
+  end
+
   def add_guest(guest)
     @occupents.push(guest)
+    if has_fav_song(guest)
+      guest.cheer
+    end
   end
 
   def remove_guest(guest)
     @occupents.delete(guest)
   end
+
+
 
 end

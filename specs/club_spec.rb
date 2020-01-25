@@ -15,10 +15,12 @@ class TestClub < Minitest::Test
     @room102 = Room.new("Room 102", 5, 5)
     @rooms = [@room101, @room102]
 
-    @josh = Guest.new("Josh", 33, 50, "wonderwall")
-    @toby = Guest.new("Toby", 40, 55, "bohemian_rhapsody")
-    @cj = Guest.new("CJ", 35, 60, "the_jackal")
-    @zoey = Guest.new("Zoey", 17, 30, "dancing_queen")
+    @wonderwall = Song.new("Wonderwall", "Oasis")
+
+    @josh = Guest.new("Josh", 33, 50, "Wonderwall")
+    @toby = Guest.new("Toby", 40, 55, "Bohemian Rhapsody")
+    @cj = Guest.new("CJ", 35, 60, "The Jackal")
+    @zoey = Guest.new("Zoey", 17, 30, "Dancing Queen")
     @guests = [@josh, @toby, @cj, @zoey]
 
     @ccc = Club.new("CodeClanCaraoke", @rooms, 200)
@@ -38,19 +40,23 @@ class TestClub < Minitest::Test
   end
 
   def test_add_song_to_room
-    @wonderwall = Song.new("Wanderwall", "Oasis")
     @ccc.add_song_to_room(@room101,@wonderwall)
     assert_equal([@wonderwall], @room101.get_songs())
   end
 
   def test_check_in__individual
+    @ccc.add_song_to_room(@room101,@wonderwall)
     @ccc.check_in(@josh, @room101)
     assert_equal([@josh],@room101.get_occupents)
+    assert_equal(45, @josh.cash)
   end
 
   def test_check_in__group
+    @ccc.add_song_to_room(@room101,@wonderwall)
     @ccc.check_in(@guests, @room101)
     assert_equal([@josh, @toby, @cj, @zoey],@room101.get_occupents)
+    assert_equal(45, @josh.cash)
+
   end
 
   def test_check_out___individual
@@ -64,6 +70,8 @@ class TestClub < Minitest::Test
     @ccc.check_out([@toby,@zoey], @room101)
     assert_equal([@josh,@cj],@room101.get_occupents)
   end
+
+
 
 
 

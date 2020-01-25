@@ -15,14 +15,18 @@ class Club
   def add_song_to_room(room,song)
     room.add_song(song)
   end
-
+  
   def check_in(guests, room)
+    amount = room.price
+    songs = room.get_songs
     if guests.is_a?(Array)
       for guest in guests
         room.add_guest(guest)
+        guest.pay(amount)
       end
     else
       room.add_guest(guests)
+      guests.pay(amount)
     end
     # p room.get_occupents
   end

@@ -19,7 +19,7 @@ end
 
 def sing(song)
   song.play()
-  p "#{name} sang #{song.name}"
+  puts "#{name} sang #{song.name}"
 end
 
 end
