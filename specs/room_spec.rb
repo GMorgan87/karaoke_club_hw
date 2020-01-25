@@ -40,7 +40,7 @@ class TestRoom < Minitest::Test
   end
 
   def test_get_songs
-    assert_equal([], @room101.songs)
+    assert_equal([], @room101.get_songs)
   end
 
   def test_get_occupents
