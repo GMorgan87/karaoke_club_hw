@@ -37,6 +37,7 @@ class Room
     end
   end
 
+
   def remove_guest(guest)
     @occupents.delete(guest)
   end

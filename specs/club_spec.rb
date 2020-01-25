@@ -49,6 +49,7 @@ class TestClub < Minitest::Test
     @ccc.check_in(@josh, @room101)
     assert_equal([@josh],@room101.get_occupents)
     assert_equal(45, @josh.cash)
+    assert_equal(205, @ccc.till)
   end
 
   def test_check_in__group
@@ -56,6 +57,8 @@ class TestClub < Minitest::Test
     @ccc.check_in(@guests, @room101)
     assert_equal([@josh, @toby, @cj, @zoey],@room101.get_occupents)
     assert_equal(45, @josh.cash)
+    assert_equal(50, @toby.cash)
+    assert_equal(220, @ccc.till)
 
   end
 
