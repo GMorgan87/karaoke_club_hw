@@ -32,6 +32,7 @@ class Room
 
   def add_guest(guest)
     @occupents.push(guest)
+    @capacity -= 1
     if has_fav_song(guest)
       guest.cheer
     end

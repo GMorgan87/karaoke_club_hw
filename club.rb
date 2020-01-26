@@ -23,6 +23,9 @@ class Club
       if guest.under_18?
         return
       end
+      if room.is_full?()
+        return
+      end
       room.add_guest(guest)
       guest.pay(amount)
       @till += amount
@@ -31,7 +34,7 @@ class Club
 
   def check_in(guest, room)
     amount = room.price
-    
+
     if guest.under_18?()
       return
     end
